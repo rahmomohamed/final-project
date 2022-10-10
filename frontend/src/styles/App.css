@@ -1,0 +1,230 @@
+.App {
+  text-align: center;
+  color: white;
+}
+
+.Header {
+  display: flex;
+}
+
+.Navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #3a2d5c;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+.Icon {
+  margin: 0 1rem 0 1rem;
+  font-size: 1.3rem;
+}
+
+.FirstIcon {
+  margin-left: 3rem;
+  font-size: 1.8rem;
+}
+
+.LastIcon {
+  margin-right: 3rem;
+}
+
+h2 {
+  margin: 0.5rem;
+}
+
+.HomePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.BannerDiv {
+  margin-top: 10rem;
+  width: 40vw;
+}
+
+.InputContainer {
+  margin-top: 5rem;
+}
+
+.SearchInput {
+  appearance: none;
+  color: black;
+  border-radius: 0.6rem;
+  padding: 0.7rem 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 0.07em;
+  max-width: 60vw;
+  min-width: 30vw;
+  background-image: linear-gradient(to right, #3A1C71 0%, #D76D77 51%, #3A1C71 100%);
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border: none;
+  display: block;
+}
+
+.SearchInput:hover {
+  background-position: right center;
+  color: #fff;
+  text-decoration: none;
+}
+
+.SearchInput:focus {
+  outline: none;
+}
+
+::placeholder {
+  font-weight: bold;
+  color: white;
+}
+
+.PersonsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.PersonCard {
+  width: 20rem;
+  height: 30rem;
+  margin: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition:
+    0.7s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    box-shadow 0.7s;
+  border-radius: 1rem;
+}
+
+.PersonCard:hover {
+  transition-timing-function: ease-in-out;
+  -moz-box-shadow: 13px 13px 0 0 #3A1C71;
+  -webkit-box-shadow: 13px 13px 0 0 #3A1C71;
+  box-shadow: 13px 13px 0 0 #3A1C71;
+  transform: scale(1.03);
+}
+
+.CircleArrow {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.753);
+}
+
+.PersonDescription {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.DetailPage {
+  background: #212124;
+  color: rgba(255, 255, 255, 0.753);
+}
+
+.DetailCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8rem 0 5rem 0;
+}
+
+.PersonImage {
+  max-width: 100%;
+  transition:
+    0.7s transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    webkit-transform cubic-bezier(0.155, 1.105, 0.295, 1.12),
+    box-shadow 0.7s;
+  margin-bottom: 1.3rem;
+  border-radius: 1rem;
+}
+
+.PersonImage:hover {
+  transition-timing-function: ease-in-out;
+  -moz-box-shadow: 20px 20px 0 0 #3a2d5c;
+  -webkit-box-shadow: 20px 20px 0 0 #3a2d5c;
+  box-shadow: 20px 20px 0 0 #3a2d5c;
+  transform: scale(1.03);
+}
+
+.InfoContainer {
+  border-radius: 2rem;
+}
+
+.InfoContainer div {
+  background: #3a2d5c;
+  font-weight: bold;
+}
+
+.PersonInfo {
+  width: 50vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.PersonInfo:first-child {
+  border-top-right-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+
+.PersonInfo:last-child {
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.PersonInfo:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.PersonInfo p {
+  margin: 0.3rem 1rem 0.3rem 1rem;
+  font-size: 1.2rem;
+}
+
+.Tips {
+  width: 50vw;
+  text-align: justify;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+@media (max-width: 700px) {
+  h2 {
+    font-size: 1rem;
+  }
+
+  .Icon {
+    margin: 0.7rem;
+    font-size: 1rem;
+  }
+
+  .BannerDiv {
+    margin-top: 7rem;
+    width: 60vw;
+  }
+
+  .PersonCard {
+    position: relative;
+  }
+
+  .PersonInfo {
+    width: 80vw;
+  }
+
+  .Tips {
+    width: 80vw;
+  }
+}
