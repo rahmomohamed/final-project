@@ -13,16 +13,13 @@ const newPerson = (personDoc, mongoDB) => {
         reject(err);
       });
   });
-}
+};
 
-const getPersonsByStatus = (personStatus = "MISSING", mongoDB) => {
-  console.log(mongoDB);
+const getPersonsByStatus = (personStatus, mongoDB) => {
   return new Promise((resolve, reject) => {
     const personsCollection = mongoDB.collection(PERSONS_COLLECTION);
     personsCollection
-      .find({
-        status: personStatus,
-      })
+      .find()
       .toArray()
       .then((result) => {
         resolve(result);
@@ -31,7 +28,7 @@ const getPersonsByStatus = (personStatus = "MISSING", mongoDB) => {
         reject(err);
       });
   });
-}
+};
 
 const getPersonByID = (personID, mongoDB) => {
   return new Promise(function (resolve, reject) {
@@ -46,7 +43,7 @@ const getPersonByID = (personID, mongoDB) => {
         reject(err);
       });
   });
-}
+};
 
 const deletePerson = (personID, mongoDB) => {
   return new Promise((resolve, reject) => {
@@ -61,7 +58,7 @@ const deletePerson = (personID, mongoDB) => {
         reject(err);
       });
   });
-}
+};
 
 module.exports = {
   newPerson,

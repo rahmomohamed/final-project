@@ -9,9 +9,9 @@ const {
   getUserByUserID,
 } = require("../models/users");
 
-router.get("/", requireAuthentication, function (req, res, next) {
+router.get("/",/* requireAuthentication,*/ function (req, res, next) {
   const mongoDB = req.app.locals.mongoDB;
-  const userID = req.params.userID;
+  const userID = req.body.userID;
   getUserByUserID(userID, mongoDB)
     .then((userObject) => {
       if (userObject) {

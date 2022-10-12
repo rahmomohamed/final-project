@@ -1,5 +1,5 @@
 const GET_PERSONS = "GET_PERSONS";
-const PERSONS_URL = "http://localhost:3001/persons";
+const PERSONS_URL = "/persons";
 
 const initialState = [];
 

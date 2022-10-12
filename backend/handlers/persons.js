@@ -11,7 +11,7 @@ const {
 router.get("/", function (req, res) {
   const mongoDB = req.app.locals.mongoDB;
 
-  getPersonsByStatus("MISSING", mongoDB)
+  getPersonsByStatus(null, mongoDB)
     .then((personsObject) => {
       if (personsObject) {
         res.status(200).json(personsObject);
@@ -28,7 +28,7 @@ router.get("/", function (req, res) {
 
 router.get("/:personID", function (req, res) {
   const mongoDB = req.app.locals.mongoDB;
-  const personID = req.params.personID;
+  const { personID } = req.params;
 
   getPersonByID(personID, mongoDB)
     .then((personObject) => {
@@ -60,6 +60,7 @@ router.post("/", requireAuthentication, function (req, res) {
         status: "MISSING",
         lat: req.body.lat,
         lng: req.body.lng,
+        lastseen: new Date(),
       },
       mongoDB
     )

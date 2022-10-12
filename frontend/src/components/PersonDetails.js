@@ -11,65 +11,60 @@ function PersonDetails() {
     dispatch(getPersonsApi());
   }, []);
 
-  const selectedPerson = persons.filter((person) => person.id === id);
+  const selectedPerson = persons.find((person) => person._id === id);
 
   return (
     <div className="DetailPage">
       <div className="DetailCard">
         <div className="Head">
           <img
-            src="https://api.lorem.space/image/face?w=150&h=150"
-            alt={selectedPerson.name}
+            src={`https://api.lorem.space/image/face?w=150&h=150&hash=${selectedPerson?._id}`}
+            alt={selectedPerson?.name}
           />
         </div>
         <div className="InfoContainer">
           <div className="PersonInfo">
             <p>Name:</p>
-            <p>{selectedPerson.name}</p>
+            <p>{selectedPerson?.name}</p>
           </div>
           <div className="PersonInfo">
             <p>Age:</p>
-            <p>{selectedPerson.age}</p>
+            <p>{selectedPerson?.age}</p>
           </div>
-          <div className="PersonInfo">
+          <div className={`PersonInfo ${selectedPerson?.status.toLowerCase()}`}>
             <p>Status:</p>
-            <p>{selectedPerson.status}</p>
+            <p>{selectedPerson?.status}</p>
           </div>
           <div className="PersonInfo">
             <p>Last Seen:</p>
-            <p>{selectedPerson.lastSeen}</p>
+            <p>{selectedPerson?.lastseen}</p>
           </div>
           <div className="PersonInfo">
             <p>Last Seen Coordinates:</p>
             <p>
               <iframe
-                width="425"
-                height="350"
-                frameborder="0"
-                scrolling="no"
-                marginheight="0"
-                marginwidth="0"
-                src={`https://www.openstreetmap.org/export/embed.html?bbox=-${selectedPerson.lat}%2C${selectedPerson.long}&amp;layer=mapnik`}
-                style="border: 1px solid black"
+                title="maps"
+                width="450"
+                height="250"
+                frameBorder="0"
+                style={{ border: 0 }}
+                referrerPolicy="no-referrer-when-downgrade"
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBxntcWB7sIVHC2xMTPT6yucOuLGjJcCbU&q=${selectedPerson?.lat},${selectedPerson?.lng}&zoom=10`}
+                allowFullScreen
               ></iframe>
-              <br />
-              <small>
-                <a href="https://www.openstreetmap.org/#map=12/37.3199/-3.4864">
-                  View Larger Map
-                </a>
-              </small>
             </p>
           </div>
 
           <div className="PersonInfo">
-            <p>Tips from Communitry:</p>
-            <p>
-              <ul>
-                {selectedPerson.tips?.map((tip) => (
-                  <li>{tip}</li>
-                ))}
-              </ul>
-            </p>
+            <p>Tips from Community:</p>
+
+            <ul>
+              {selectedPerson?.tips?.map((tip) => (
+                <li key={tip.name}>
+                  {tip.name}: {tip.info}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

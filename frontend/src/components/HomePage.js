@@ -27,7 +27,7 @@ function HomePage() {
       </div>
       <div className="PersonsContainer">
         {filteredPersons.map((person) => (
-          <PersonCard person={person} />
+          <PersonCard key={person._id} person={person} />
         ))}
       </div>
     </div>

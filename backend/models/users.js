@@ -1,4 +1,5 @@
 const USERS_COLLECTION = "users";
+const { mongoID } = require("../utils/mongo");
 const bcrypt = require("bcryptjs");
 
 const newUser = (userDocument, mongoDB) => {
@@ -42,8 +43,9 @@ const getUserByUserEmail = (email, mongoDB, includePassword) => {
 const getUserByUserID = (id, mongoDB) => {
   return new Promise((resolve, reject) => {
     const usersCollection = mongoDB.collection(USERS_COLLECTION);
+    const _id = mongoID(id);
     usersCollection
-      .find({ _id: id })
+      .find(_id)
       .toArray()
       .then((results) => {
         resolve(results[0]);
