@@ -157,11 +157,27 @@ h2 {
   font-weight: bold;
 }
 
-.PersonInfo {
+.Head {
   width: 50vw;
   display: flex;
   justify-content: space-between;
   text-align: left;
+  color: #66bb6a;
+  margin-bottom: 0.3rem;
+}
+
+.Head button{
+  width: 10rem;
+  height: 1.6rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+
+.PersonInfo {
+  width: 50vw;
+  display: flex;
+  justify-content: space-between;
 }
 
 .PersonInfo:first-child {
@@ -184,10 +200,57 @@ h2 {
 }
 
 .Tips {
-  width: 50vw;
-  text-align: justify;
+  text-align-last: left;
   margin-top: 0;
   padding-top: 0;
+  margin: 0.3rem 1rem 0.3rem 1rem;
+}
+
+.TipInput {
+  appearance: none;
+  color: black;
+  border-radius: 0.6rem;
+  padding: 0.7rem 1rem;
+  margin-right: 0.3rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 0.07em;
+  max-width: 60vw;
+  min-width: 30vw;
+  background-color: #D76D77;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border: none;
+  display: block;
+}
+
+.NameInput {
+  appearance: none;
+  color: black;
+  border-radius: 0.6rem;
+  padding: 0.7rem 1rem;
+  margin-right: 0.3rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 0.07em;
+  max-width: 60vw;
+  min-width: 10vw;
+  background-color: #D76D77;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  border: none;
+  display: block;
+}
+
+.SendTip {
+  background: white;
+  color: #3a2d5c;
+  width: 10rem;
+  font-weight: bold;
+  font-size: 1.3rem;
+  border-radius: 0.6rem;
 }
 
 .missing {
@@ -207,6 +270,14 @@ h2 {
   padding: 5rem;
   margin-top: 50px;
   border-radius: 1rem;
+}
+
+.foundButton {
+  padding: 3px;
+  background-color: green;
+  color: white;
+  float: right !important;
+  border: 0;
 }
 
 @media (max-width: 700px) {

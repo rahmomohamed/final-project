@@ -5,7 +5,8 @@ const {
   getPersonsByStatus,
   getPersonByID,
   newPerson,
-  deletePerson,
+  updatePersonStatus,
+  submitTip,
 } = require("../models/persons");
 
 router.get("/", function (req, res) {
@@ -32,6 +33,7 @@ router.get("/:personID", function (req, res) {
 
   getPersonByID(personID, mongoDB)
     .then((personObject) => {
+      console.log(personObject);
       if (personObject) {
         res.status(200).json(personObject);
       } else {
@@ -45,6 +47,46 @@ router.get("/:personID", function (req, res) {
         error: "Person not found",
       });
     });
+});
+
+router.post("/:personID/tip", requireAuthentication, function (req, res) {
+  const { personID } = req.params;
+  if (!personID) {
+    res.status(400);
+    res.json({ message: "Bad Request" });
+  } else {
+    const mongoDB = req.app.locals.mongoDB;
+    submitTip(personID, req.body.name, req.body.info, mongoDB).then(
+      (personObject) => {
+        if (personObject) {
+          res.status(201).json(personObject);
+        } else {
+          res.status(404).json({
+            error: `Person not found`,
+          });
+        }
+      }
+    );
+  }
+});
+
+router.post("/:personID/found", requireAuthentication, function (req, res) {
+  const { personID } = req.params;
+  if (!personID) {
+    res.status(400);
+    res.json({ message: "Bad Request" });
+  } else {
+    const mongoDB = req.app.locals.mongoDB;
+    updatePersonStatus(personID, "FOUND", mongoDB).then((personObject) => {
+      if (personObject) {
+        res.status(200).json(personObject);
+      } else {
+        res.status(404).json({
+          error: `Person not found`,
+        });
+      }
+    });
+  }
 });
 
 router.post("/", requireAuthentication, function (req, res) {

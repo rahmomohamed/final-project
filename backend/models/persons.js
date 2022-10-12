@@ -45,10 +45,47 @@ const getPersonByID = (personID, mongoDB) => {
   });
 };
 
+const submitTip = (personID, name, info, mongoDB) => {
+  return new Promise((resolve, reject) => {
+    const personsCollection = mongoDB.collection(PERSONS_COLLECTION);
+    const _id = mongoID(personID);
+    personsCollection
+      .updateOne(_id, {
+        $push: {
+          tips: {
+            name: name,
+            info: info,
+          },
+        },
+      })
+      .then((result) => {
+        resolve(result.modifiedCount > 0);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
+const updatePersonStatus = (personID, personStatus, mongoDB) => {
+  return new Promise((resolve, reject) => {
+    const personsCollection = mongoDB.collection(PERSONS_COLLECTION);
+    const _id = mongoID(personID);
+    personsCollection
+      .updateOne(_id, { $set: { status: personStatus } })
+      .then((result) => {
+        resolve(result.modifiedCount > 0);
+      })
+      .catch((err) => {
+        reject(err);
+      });
+  });
+};
+
 const deletePerson = (personID, mongoDB) => {
   return new Promise((resolve, reject) => {
     const personsCollection = mongoDB.collection(PERSONS_COLLECTION);
-    const _id = generateMongoIDQuery(personID);
+    const _id = mongoID(personID);
     personsCollection
       .deleteOne(_id)
       .then((result) => {
@@ -65,4 +102,6 @@ module.exports = {
   getPersonsByStatus,
   getPersonByID,
   deletePerson,
+  updatePersonStatus,
+  submitTip,
 };
